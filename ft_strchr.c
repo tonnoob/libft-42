@@ -1,15 +1,29 @@
-char *ft_strchr(const char *str, int c)
-{
-    int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: osousa-d <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/25 16:21:44 by osousa-d          #+#    #+#             */
+/*   Updated: 2025/07/25 16:21:46 by osousa-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] == c)
-        return ((char *)&str[i]);
-        i++;
-    }
-    if (c == '\0')
-        return ((char *)&str[i]);
-    return (NULL);
+#include <stdlib.h>
+
+char	*ft_strchr(const char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return ((char *)&str[i]);
+		i++;
+	}
+	if (c == '\0')
+		return ((char *)&str[i]);
+	return (NULL);
 }
