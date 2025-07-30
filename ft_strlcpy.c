@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
@@ -18,11 +18,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 	size_t	j;
 
 	i = 0;
-	j = 0;
-	while (src[j])
-	{
-		j++;
-	}
+	j = ft_strlen(src);
 	if (n == 0)
 		return (j);
 	while (i < n - 1 && src[i])
