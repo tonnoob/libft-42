@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osousa-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 19:47:49 by osousa-d          #+#    #+#             */
-/*   Updated: 2025/07/28 19:47:50 by osousa-d         ###   ########.fr       */
+/*   Created: 2025/07/30 16:16:48 by osousa-d          #+#    #+#             */
+/*   Updated: 2025/07/30 16:16:50 by osousa-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void			*mem;
+	char	*sub_s;
+	size_t	size_s;
 
-	if (count == 0 || size == 0)
-		return (malloc(1));
-	if (size && count > (size_t)-1 / size)
+	size_s = ft_strlen(s);
+	if (start > size_s)
+		return (ft_strdup(""));
+	if (len > size_s - start)
+		len = size_s - start;
+	sub_s = ft_calloc(len + 1, sizeof(char));
+	if (!sub_s)
 		return (NULL);
-	mem = malloc(count * size);
-	if (!mem)
-		return (NULL);
-	ft_bzero(mem, count * size);
-	return (mem);
+	ft_memcpy(sub_s, (s + start), len);
+	return (sub_s);
 }
