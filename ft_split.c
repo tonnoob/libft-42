@@ -10,4 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	unsigned char	*str;
+
+	str = (unsigned char *)s;
+	i = 0;
+
+
+	while ()
+	{
+		/* code */
+	}
+	
+}
