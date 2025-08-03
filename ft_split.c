@@ -12,18 +12,91 @@
 
 #include "libft.h"
 
+int	count_words(char const *s, char c)
+{
+	int	count;
+
+	count = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s)
+		{
+			count++;
+			while (*s && *s != c)
+				s++;
+		}
+	}
+	return (count);
+}
+
+int	word_len(char const *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+char	*word_dup(const char *s, int size)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = malloc((size + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (i < size)
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+void	free_all(char **array, int mal_sucess)
+{
+	int	i;
+
+	i = 0;
+	while (i < mal_sucess)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	unsigned char	*str;
+	char	**array;
+	int		i;
+	int		n_words;
+	int		len;
 
-	str = (unsigned char *)s;
+	if (!s)
+		return (NULL);
+	n_words = count_words(s, c);
+	array = malloc((n_words + 1) * sizeof(char *));
+	if (!array)
+		return (NULL);
 	i = 0;
-
-
-	while ()
+	while (*s && i < n_words)
 	{
-		/* code */
+		while (*s == c)
+			s++;
+		len = word_len(s, c);
+		array[i] = word_dup(s, len);
+		if (!array[i])
+			return (free_all(array, i), NULL);
+		s += len;
+		i++;
 	}
-	
+	array[i] = NULL;
+	return (array);
 }
