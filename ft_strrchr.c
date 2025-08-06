@@ -17,15 +17,17 @@ char	*ft_strrchr(const char *str, int c)
 	int		i;
 	char	*l;
 
+	if (!str)
+		return (NULL);
 	l = NULL;
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == c)
+		if (str[i] == (unsigned char)c)
 			l = (char *)&str[i];
 		i++;
 	}
-	if (c == '\0')
+	if ((unsigned char)c == '\0')
 		return ((char *)&str[i]);
 	return (l);
 }
