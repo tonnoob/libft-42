@@ -76,17 +76,17 @@ char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	int		i;
-	int		n_words;
+	int		c_words;
 	int		len;
 
 	if (!s)
 		return (NULL);
-	n_words = count_words(s, c);
-	array = malloc((n_words + 1) * sizeof(char *));
+	c_words = count_words(s, c);
+	array = malloc((c_words + 1) * sizeof(char *));
 	if (!array)
 		return (NULL);
 	i = 0;
-	while (*s && i < n_words)
+	while (*s && i < c_words)
 	{
 		while (*s == c)
 			s++;

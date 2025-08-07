@@ -36,11 +36,6 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# $^ - todos os prérequisitos
-# $@ - target
-# $< - pega o primeiro pré requisito 
-#ou SRC
-
 clean:	
 	rm -f $(OBJ)
 
